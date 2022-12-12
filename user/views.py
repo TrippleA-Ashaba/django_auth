@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import UserRegistrationForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -18,5 +19,6 @@ def home(request):
     return render(request, "user/home.html", {"form": form})
 
 
+@login_required
 def about(request):
     return render(request, "user/about.html")
